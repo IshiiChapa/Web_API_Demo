@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn(props) {
   const classes = useStyles();
 
+  function responseGoogle(res){
+    console.log(res)
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -58,6 +61,8 @@ export default function SignIn(props) {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={props.changeEmail}
+            value={props.state.email}
           />
           <TextField
             variant="outlined"
@@ -69,6 +74,8 @@ export default function SignIn(props) {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={props.changePassword}
+            value={props.state.password}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -85,12 +92,13 @@ export default function SignIn(props) {
           </Button>
           <GoogleLogin
               clientId="458802440546-vsavcdcq7si450t7l1f0iddoagnmjm5n.apps.googleusercontent.com"
-              onSuccess={props.handleLogin}
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
           />
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
-                Forgot password?
+                dforgot password?
               </Link>
             </Grid>
             <Grid item>

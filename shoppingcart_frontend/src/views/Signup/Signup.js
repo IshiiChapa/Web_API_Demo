@@ -86,10 +86,8 @@ render(){
     changeEmail = {this.changeEmail}
     changePassword = {this.changePassword}
     onSubmit = {this.onSubmit}
-
     state = {this.state}
     />
-
     );
 }
 

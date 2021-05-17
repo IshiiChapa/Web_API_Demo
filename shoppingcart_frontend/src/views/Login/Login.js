@@ -15,52 +15,70 @@ import Container from '@material-ui/core/Container';
 import GoogleLogin from 'react-google-login';
 import Loginview from './LoginView'
 import ReactCom, { Component } from 'react';
+import axios from 'axios'
+
 
 
 class Login extends Component{
 
-   handleLogin = async googleData => {
-    const res = await fetch("/api/v1/auth/google", {
-        method: "POST",
-        body: JSON.stringify({
-        token: googleData.tokenId
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    console.log(res,"wwwww")
-    const data = await res.json()
-  }
-
-  // googleSign(){
-  //   const { OAuth2Client } = require('google-auth-library')
-  // const client = new OAuth2Client(process.env.CLIENT_ID)
-  // server.post("/api/v1/auth/google", async (req, res) => {
-  //     const { token }  = req.body
-  //     const ticket = await client.verifyIdToken({
-  //         idToken: token,
-  //         audience: process.env.CLIENT_ID
-  //     });
-  //     const { name, email, picture } = ticket.getPayload();    
-  //     const user = await db.user.upsert({ 
-  //         where: { email: email },
-  //         update: { name, picture },
-  //         create: { name, email, picture }
-  //     })
-  //     res.status(201)
-  //     res.json(user)
-  // })
+  //  handleLogin = async googleData => {
+  //   const res = await fetch("/api/v1/auth/google", {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //       token: googleData.tokenId
+  //     }),
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     }
+  //   })
+  //   console.log(res,"wwwww")
+  //   const data = await res.json()
   // }
+ 
+  constructor(){
+    super()
+    this.state = {
+        email : '',
+        password : ''
+    }
+    this.changeEmail = this.changeEmail.bind(this)
+    this.changePassword = this.changePassword.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+    
+}
+handleLogin = (res) =>{
+  console.log('res')
+}
+changeEmail(event){
+  this.setState({
+      email:event.target.value
+  })
+}
+changePassword(event){
+  this.setState({
+      password:event.target.value
+  })
+}
+    onSubmit(){
+      const registered = {
+        email : this.state.email,
+        password : this.state.password
+    }
+    console.log(registered,"sfsf")
+    axios.Get('http://localhost:2000/api/login', registered)
+        .then(response=> console.log(response.data))
+    }
 
   
 render(){
   return(
-    <Loginview>
+    <Loginview
       handleLogin = {this.handleLogin}
-    </Loginview>
+      changeEmail = {this.changeEmail}
+      changePassword = {this.changePassword}
+      onSubmit = {this.onSubmit}
+      state = {this.state}/>
     );
 }
 }
-
 export default Login;
