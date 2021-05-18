@@ -57,19 +57,17 @@ changePassword(event){
 }
 
 onSubmit(){
-
-  
-
   const registered = {
       firstname : this.state.firstname,
       lastname : this.state.lastname,
       email : this.state.email,
       password : this.state.password
   }
-  console.log(registered,"wdad")
   axios.post('http://localhost:2000/api/signup', registered)
-      .then(response=> console.log(response.data))
-
+  .then((response)=>{
+    console.log(response.data)
+})
+      .catch(response=> alert(response))
       // this.setState({
       //     firstname : '',
       //     lastname : '',

@@ -87,12 +87,13 @@ export default function SignIn(props) {
             label="Remember me"
           />
           <Button
-            href="http://localhost:3000/itemview"
-            type="submit"
+            //href="http://localhost:3000/itemview"
+            type="button"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={props.onSubmit}
           >
             Sign In
           </Button>

@@ -31,8 +31,9 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const User = require("../models/signupmodel")
 const router = express.Router();
+const {registerValidation} = require('../middleware/validation')
  
-router.post("/", async (req, res) => {
+router.post("/", registerValidation, async (req, res) => {
  
  let salt = await bcrypt.genSalt(10);
  let hashpw = await bcrypt.hash(req.body.password, salt);

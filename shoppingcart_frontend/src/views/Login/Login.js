@@ -41,7 +41,8 @@ class Login extends Component{
         email : '',
         password : '',
         fields: {},
-        errors: {}
+        errors: {},
+        token:''
     }
     this.changeEmail = this.changeEmail.bind(this)
     this.changePassword = this.changePassword.bind(this)
@@ -66,54 +67,18 @@ changePassword(event){
         email : this.state.email,
         password : this.state.password
     }
-    console.log(registered,"sfsf")
-    axios.Get('http://localhost:2000/api/login', registered)
-        .then(response=> console.log(response.data))
+    console.log(registered)
+    axios.post('http://localhost:2000/api/auth', registered)
+        .then(response=> {
+          console.log(response.date)
+          this.setState({
+              token : response.data
+          })
+          if(response.data){
+            this.props.history.push('/itemview')
+          }
+        })
     }
-
-    handleValidation(){
-      let fields = this.state.fields;
-      let errors = {};
-      let formIsValid = true;
-
-      //Email
-      if(!fields["email"]){
-        formIsValid = false;
-        errors["email"] = "Cannot be empty";
-     }
-
-     if(typeof fields["email"] !== "undefined"){
-        let lastAtPos = fields["email"].lastIndexOf('@');
-        let lastDotPos = fields["email"].lastIndexOf('.');
-
-        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
-           formIsValid = false;
-           errors["email"] = "Email is not valid";
-         }
-    }  
-
-      //password
-      if(!fields["password"]){
-         formIsValid = false;
-         errors["password"] = "Cannot be empty";
-      }
-
-      if(typeof fields["password"] !== "undefined"){
-         if(!fields["password"].match(/^[a-zA-Z]+$/)){
-            formIsValid = false;
-            errors["password"] = "Only letters";
-         }        
-      }
- 
-     this.setState({errors: errors});
-     return formIsValid;
- }
- handleChange(field, e){         
-  let fields = this.state.fields;
-  fields[field] = e.target.value;        
-  this.setState({fields});
-}
-
 
 render(){
   return(
@@ -121,8 +86,6 @@ render(){
       handleLogin = {this.handleLogin}
       changeEmail = {this.changeEmail}
       changePassword = {this.changePassword}
-      handleValidation = {this.handleValidation}
-      handleChange = {this.handleChange}
       onSubmit = {this.onSubmit}
       state = {this.state}/>
     );
