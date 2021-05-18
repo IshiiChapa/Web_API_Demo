@@ -14,6 +14,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import { PinDropSharp } from '@material-ui/icons';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import Home from '@material-ui/icons/Home';    
+import { Notifications } from '@material-ui/icons';  
+import ContactsIcon from '@material-ui/icons/Contacts'; 
+import PhoneIcon from '@material-ui/icons/Phone';
 
 function Copyright() {
   return (
@@ -71,8 +76,20 @@ export default function Album(props) {
       <AppBar position="relative">
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            Album layout
+            Pizza Shop
           </Typography>
+          <div style ={{ 'paddingLeft': "1600px"}}>
+            <Home/> 
+          </div>
+          <div style ={{ 'paddingLeft': "20px"}}>
+          <Notifications/>  
+           </div>
+           <div style ={{ 'paddingLeft': "20px"}}>
+           <PhoneIcon/>
+           </div>
+           <div style ={{ 'paddingLeft': "20px"}}>
+           <AddShoppingCartIcon/>
+           </div>
         </Toolbar>
       </AppBar>
       <main>
@@ -80,7 +97,7 @@ export default function Album(props) {
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Wellcome
+              Wellcome to Pizza Shop
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               Something short and leading about t
