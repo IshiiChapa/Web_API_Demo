@@ -39,7 +39,9 @@ class Login extends Component{
     super()
     this.state = {
         email : '',
-        password : ''
+        password : '',
+        fields: {},
+        errors: {}
     }
     this.changeEmail = this.changeEmail.bind(this)
     this.changePassword = this.changePassword.bind(this)
@@ -69,13 +71,58 @@ changePassword(event){
         .then(response=> console.log(response.data))
     }
 
-  
+    handleValidation(){
+      let fields = this.state.fields;
+      let errors = {};
+      let formIsValid = true;
+
+      //Email
+      if(!fields["email"]){
+        formIsValid = false;
+        errors["email"] = "Cannot be empty";
+     }
+
+     if(typeof fields["email"] !== "undefined"){
+        let lastAtPos = fields["email"].lastIndexOf('@');
+        let lastDotPos = fields["email"].lastIndexOf('.');
+
+        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
+           formIsValid = false;
+           errors["email"] = "Email is not valid";
+         }
+    }  
+
+      //password
+      if(!fields["password"]){
+         formIsValid = false;
+         errors["password"] = "Cannot be empty";
+      }
+
+      if(typeof fields["password"] !== "undefined"){
+         if(!fields["password"].match(/^[a-zA-Z]+$/)){
+            formIsValid = false;
+            errors["password"] = "Only letters";
+         }        
+      }
+ 
+     this.setState({errors: errors});
+     return formIsValid;
+ }
+ handleChange(field, e){         
+  let fields = this.state.fields;
+  fields[field] = e.target.value;        
+  this.setState({fields});
+}
+
+
 render(){
   return(
     <Loginview
       handleLogin = {this.handleLogin}
       changeEmail = {this.changeEmail}
       changePassword = {this.changePassword}
+      handleValidation = {this.handleValidation}
+      handleChange = {this.handleChange}
       onSubmit = {this.onSubmit}
       state = {this.state}/>
     );

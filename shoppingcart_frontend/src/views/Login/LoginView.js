@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import GoogleLogin from 'react-google-login';
+import signuppage from '../Signup/view'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -40,6 +41,10 @@ export default function SignIn(props) {
   function responseGoogle(res){
     console.log(res)
   }
+
+
+
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -82,6 +87,7 @@ export default function SignIn(props) {
             label="Remember me"
           />
           <Button
+            href="http://localhost:3000/itemview"
             type="submit"
             fullWidth
             variant="contained"
@@ -98,11 +104,11 @@ export default function SignIn(props) {
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
-                dforgot password?
+                Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="http://localhost:3000/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
