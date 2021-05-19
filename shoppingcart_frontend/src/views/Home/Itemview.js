@@ -128,10 +128,10 @@ export default function Album(props) {
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="#000000" style={{backgroundColor: "#8bc34a"}}>
-                      <Link href="http://localhost:3000/addtocart">AddToCart</Link>
+                      <Link href="http://localhost:3000/pricing">AddToCart</Link>
                     </Button>
                     <Button size="small" color="#000000" style={{backgroundColor: "#ffc107"}}>
-                      <Link href="http://localhost:3000/checkout">CheckOut</Link>
+                      <Link href="http://localhost:3000/checkout">Checkout</Link>
                     </Button> 
                   </CardActions>
                 </Card>
