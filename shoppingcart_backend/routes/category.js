@@ -1,5 +1,6 @@
 const express = require('express');
 const { addCategory, getCategories } = require('../controller/category');
+// const { registerValidation, adminMiddleware } = require('../middleware/validation');
 const router = express.Router();
 
 
