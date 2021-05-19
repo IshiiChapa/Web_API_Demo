@@ -8,7 +8,7 @@ const schema = {
     firstname: joi
  .string()
  .min(3)
- .max(20)
+ .max(50)
  .required()
  .messages({
  'string.base': 'Register name should be a type of \'text\'',
@@ -20,7 +20,7 @@ const schema = {
  lastname: joi
  .string()
  .min(3)
- .max(20)
+ .max(50)
  .required()
  .messages({
  'string.base': 'Register name should be a type of \'text\'',
@@ -32,7 +32,7 @@ const schema = {
  email: joi
  .string()
  .min(3)
- .max(20)
+ .max(50)
  .required()
  .messages({
  'string.base': 'Register name should be a type of \'text\'',
@@ -44,7 +44,7 @@ const schema = {
  password: joi
  .string()
  .min(3)
- .max(20)
+ .max(50)
  .required()
  .messages({
  'string.base': 'Register name should be a type of \'text\'',
