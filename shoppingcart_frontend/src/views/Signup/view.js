@@ -109,10 +109,11 @@ export default function SignUp(props) {
             fullWidth
             variant="contained"
             color="primary"
+            style={{backgroundColor: "#ec407a"}}
             className={classes.submit}
-            onClick={props.onSubmit}
-          >
-            Sign Up
+            onClick={props.onSubmit}>
+            <Link href="http://localhost:3000/itemview">Sign Up</Link>
+            
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
