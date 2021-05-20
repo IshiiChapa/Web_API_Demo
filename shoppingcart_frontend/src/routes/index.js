@@ -9,6 +9,33 @@ import AddressForm from "../views/Home/AddressForm"
 import PaymentForm from "../views/Home/PaymentForm"
 import Review from "../views/Home/Review"
 import Pricing from "../views/Home/Pricing"
+// const express=require('express');
+// const cors=require('cors');
+// const app=express();
+// const swaggerJSDoc=require('swagger-jsdoc');
+// const swaggerUI=require('swagger-ui-express');
+
+
+// const swaggerOptions={
+//     definition:{
+//         openapi:'3.0.0',
+//         info:{
+//             title:"Rstuarent API",
+//             version:'1.0.0',
+//             contact:{
+
+//             },
+//             servers:["http://localhost:3000"]
+
+//         }
+
+//     },
+//     apis:["index.js"]
+// }
+
+// const swaggerDocs=swaggerJSDoc(swaggerOptions);
+// app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerDocs));
+
 
 
 export default () => (
@@ -25,3 +52,25 @@ export default () => (
 
     </BrowserRouter>
 )
+
+// app.use(express.json());
+// /**
+//  * @swagger
+//  * definition:
+//  *   type:string
+//  *   required:true
+//  * Product:
+//  *    type:string
+//  *     required:true
+//  * name:
+//  *  type:String
+//  * description: name of the product
+//  * example:'thanduri chichen pizza'
+//  * price:
+//  *  type:sring
+//  * imgURL:
+//  *   type:string
+//  * 
+//  * 
+//  * 
+//  */
