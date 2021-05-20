@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
  // const { registerValidation, adminMiddleware } = require('../middleware/validation');
-const Products = require('../models/itemlistmodel');
+const Product = require('../models/product');
 const { createProduct } = require('../controller/product');
 const multer = require('multer');
 const shortid = require('shortid');
@@ -32,7 +32,7 @@ const storage  = multer.diskStorage({
    
   const upload = multer({ storage });
 
-router.post('/product/create', upload.single('productPicture'),createProduct);
+router.post('/product/create', upload.array('productPicture'),createProduct);
 //router.get('/category/getcategory', getCategories);
 
 
